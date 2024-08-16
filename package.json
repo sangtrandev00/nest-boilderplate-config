@@ -8,10 +8,13 @@
   "scripts": {
     "build:prod": "tsc -p tsconfig.build.json",
     "start:dev": "ts-node src/main.ts",
+    "start:dev:watch": "nest start --watch",
     "start:prod": "node dist/main.js",
+    "debug": "nest start --debug --watch",
     "typeorm": "typeorm-ts-node-esm",
     "migration:generate": "yarn run typeorm migration:generate -d ormconfig",
     "migration:create": "yarn run typeorm migration:create -d ormconfig",
+    "migration:run": "yarn run typeorm migration:run",
     "new": "hygen new",
     "migration:revert": "yarn run typeorm migration:revert",
     "schema:drop": "yarn run typeorm schema:drop",

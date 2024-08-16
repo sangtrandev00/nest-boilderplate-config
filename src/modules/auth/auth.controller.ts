@@ -35,9 +35,7 @@ export class AuthController {
     type: LoginPayloadDto,
     description: 'User info with access token',
   })
-  async userLogin(
-    @Body() userLoginDto: UserLoginDto,
-  ): Promise<LoginPayloadDto> {
+  async userLogin(@Body() userLoginDto: UserLoginDto): Promise<any> {
     const userEntity = await this.authService.validateUser(userLoginDto);
 
     const token = await this.authService.createAccessToken({
@@ -45,7 +43,9 @@ export class AuthController {
       role: userEntity.role,
     });
 
-    return new LoginPayloadDto(userEntity.toDto(), token);
+    return {
+      token: token,
+    };
   }
 
   @Post('register')
